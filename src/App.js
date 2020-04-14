@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+// App.js
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import ClimbsTable from './components/ClimbsTable';
 
-export default App;
+export default App => {
+  const [problems, setProblems] = useState([])
+
+  useEffect(() => {
+
+    // async function getClimbs() {
+    //   const res = await fetch('/.netlify/functions/climbRead')
+    //   const data = await res.json()
+    //   console.log(data.data)
+    //   setProblems(data.data)
+
+    // }
+    fetch('/.netlify/functions/climbRead')
+      .then(res => res.json())
+      .then(res => {
+        setProblems(res.data)
+      })
+      .catch(err => console.log('Error retrieving climbs: ', err))
+    // getClimbs()
+  }, []);
+
+  return (
+    <div>
+      {/* <ClimbsTable problems={problems}/> */}
+      {problems.length > 0 ? <ClimbsTable problems={problems}/> : console.log(problems)}
+    </div>
+  )
+}
