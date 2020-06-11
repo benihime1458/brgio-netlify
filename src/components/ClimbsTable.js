@@ -62,7 +62,7 @@ const Problem = props => {
             <Typography variant="body2" style={{ backgroundColor: 'white' }}>{props.problem.number}</Typography>
             <Divider />
             <Typography variant="subtitle2" style={{ backgroundColor: 'white' }}>
-              {lessThan7DaysOld ? "?" : "V" + props.problem.grade}
+              {lessThan7DaysOld ? "?" : props.problem.grade}
               {/* {props.problem.grade} */}
             </Typography>
             <Divider />
@@ -149,6 +149,7 @@ export default props => {
   const southwest = problemList('south west');
   const toprope = problemList('top rope');
   const westwall = problemList('west wall');
+  const netlify = problemList('netlify');
 
   return (
     <>
@@ -156,6 +157,7 @@ export default props => {
       <Card className={classes.card}>
         <CardMedia className={classes.media} image="images/brgmap.jpg" title="brgmap" />
       </Card>
+      {netlify}
       {cave}
       {corridor}
       {northeast}

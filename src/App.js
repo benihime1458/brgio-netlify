@@ -16,7 +16,7 @@ export default App => {
     //   setProblems(data.data)
 
     // }
-    fetch('/.netlify/functions/climbRead')
+    fetch('/.netlify/functions/getAllProblems')
       .then(res => res.json())
       .then(res => {
         setProblems(res.data)
