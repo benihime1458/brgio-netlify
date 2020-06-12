@@ -1,0 +1,10 @@
+body {
+  background-image: url('https://i.imgur.com/suDQUyA.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.vecteezy {
+  visibility: hidden
+} 

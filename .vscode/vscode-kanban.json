@@ -1,0 +1,53 @@
+{
+  "done": [],
+  "in-progress": [
+    {
+      "assignedTo": {
+        "name": "baklavacado"
+      },
+      "creation_time": "2020-06-11T22:37:49.944Z",
+      "id": "4",
+      "references": [],
+      "title": "Build User Dashboard"
+    },
+    {
+      "assignedTo": {
+        "name": "baklavacado"
+      },
+      "creation_time": "2020-06-11T22:37:27.545Z",
+      "id": "3",
+      "references": [],
+      "title": "User Login/Signup UI"
+    },
+    {
+      "assignedTo": {
+        "name": "baklavacado"
+      },
+      "creation_time": "2020-06-11T22:38:02.611Z",
+      "id": "5",
+      "references": [],
+      "title": "Build Homepage"
+    }
+  ],
+  "testing": [],
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "baklavacado"
+      },
+      "creation_time": "2020-06-11T22:36:39.116Z",
+      "id": "1",
+      "references": [],
+      "title": "Implement Netlify Identity"
+    },
+    {
+      "assignedTo": {
+        "name": "baklavacado"
+      },
+      "creation_time": "2020-06-11T22:36:55.220Z",
+      "id": "2",
+      "references": [],
+      "title": "Netlify Functions"
+    }
+  ]
+}
