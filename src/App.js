@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Home from './Home';
+import AuthUI from './users/AuthUI'
 import ClimbsTable from './components/ClimbsTable';
 
 export default App => {
@@ -22,13 +22,20 @@ export default App => {
     //     setProblems(res.data)
     //   })
     //   .catch(err => console.log('Error retrieving climbs: ', err))
+    async function getUser(test) {
+      const res = await fetch(`/.netlify/functions/getUser?username=${test}`)
+      const data = await res.json()
+      console.log(data.data)
+    }
+
     getClimbs()
+    getUser('benihime1458')
   }, []);
 
   return (
-    <div>
+    <div className='content'>
       {/* {problems.length > 0 ? <ClimbsTable problems={problems}/> : console.log(problems)} */}
-      <Home />
+      <AuthUI />
     </div>
   )
 }
