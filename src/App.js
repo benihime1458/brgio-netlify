@@ -15,20 +15,15 @@ export default App => {
       setProblems(data.data)
 
     }
-    // fetch('/.netlify/functions/getAllProblems')
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     console.log(res.data[0])
-    //     setProblems(res.data)
-    //   })
-    //   .catch(err => console.log('Error retrieving climbs: ', err))
+
     async function getUser(test) {
-      const res = await fetch(`/.netlify/functions/getUser?username=${test}`)
-      const data = await res.json()
-      console.log(data.data)
+        const res = await fetch(`/.netlify/functions/getUser?username=${test}`)
+        const data = await res.json()
+        console.log(data.data)
     }
 
     getClimbs()
+    getUser('beihime1458')
     getUser('benihime1458')
   }, []);
 

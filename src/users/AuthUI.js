@@ -13,7 +13,7 @@ export default AuthUI => {
   )
   const [index, setIndex] = useState(0)
 
-  const onSub = data => console.log(data)
+  const submitForm = data => console.log(data)
 
   // const login = e => {
   //   e.preventDefault()
@@ -51,7 +51,7 @@ export default AuthUI => {
           onClick={() => setIndex(1)}
         />
       </Tabs>
-      <form onSubmit={handleSubmit(onSub)}>
+      <form onSubmit={handleSubmit(submitForm)}>
 
         {
           index === 1 ? <TextField 
