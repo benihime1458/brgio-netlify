@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import AuthUI from './users/AuthUI'
 import ClimbsTable from './components/ClimbsTable';
+import './App.css';
 
 export default App => {
   const [problems, setProblems] = useState([])
@@ -22,15 +22,17 @@ export default App => {
         console.log(data.data)
     }
 
-    getClimbs()
-    getUser('beihime1458')
-    getUser('benihime1458')
+    // getClimbs()
+    // getUser('beihime1458')
+    // getUser('benihime1458')
   }, []);
 
   return (
-    <div className='content'>
-      {/* {problems.length > 0 ? <ClimbsTable problems={problems}/> : console.log(problems)} */}
-      <AuthUI />
+    <div className='root'>
+      <div className='content'>
+        <AuthUI />
+        {/* {problems.length > 0 ? <ClimbsTable problems={problems}/> : console.log(problems)} */}
+      </div>
     </div>
   )
 }
