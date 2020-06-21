@@ -4,9 +4,17 @@ import User from './userModel';
 
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
-  const username = event.queryStringParameters.username
+  const {username, email} = event.queryStringParameters
 
-  const user = await User.findOne({username: username})
+  let user
+  
+  if (username) {
+    user = await User.findOne({username: username})
+  }
+
+  if (email) {
+    user = await User.findOne({email: email})
+  }
 
   if (user) {
     return {
