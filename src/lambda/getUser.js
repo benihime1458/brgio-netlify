@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import db from './server';
 import User from './userModel';
-
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   const {username, email} = event.queryStringParameters
@@ -14,6 +13,17 @@ exports.handler = async (event, context) => {
 
   if (email) {
     user = await User.findOne({email: email})
+  }
+
+  if (!username && !email) {
+    const users = await User.find()
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        msg: "all users found",
+        data: users
+      })
+    }
   }
 
   if (user) {
@@ -33,4 +43,6 @@ exports.handler = async (event, context) => {
       })
     }
   }
+
+
 }
