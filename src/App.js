@@ -23,8 +23,8 @@ export default App => {
     }
 
     // getClimbs()
-    // getUser('beihime1458')
-    // getUser('benihime1458')
+    getUser('')
+    getUser('benihime1458')
   }, []);
 
   return (

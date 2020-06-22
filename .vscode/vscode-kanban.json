@@ -7,11 +7,11 @@
       },
       "creation_time": "2020-06-11T22:37:27.545Z",
       "description": {
-        "content": "Current Focus: Login/Sign up using fire auth\n",
+        "content": "Current Focus: - on sign up...\n    \t- create new user in db w/lambda\n        \t- if username || email available\n        - create auth user in firebase auth\n        \t- if username && email available\n",
         "mime": "text/markdown"
       },
       "details": {
-        "content": "- Login/Sign up using fire auth\n\t- ~~handle catch error somehow when user object is not found in db when validating duplicate usernames~~\n    - ~~handle catch error in general...~~ \n    - not finding a resource is not an error\n    - \n- Create lambda fn for creating user in db\n\t- when signing users in, getUser fn should be called to fetch data",
+        "content": "- Sign up using fire auth\n\t- ~~handle catch error somehow when user object is not found in db when validating duplicate usernames~~\n    - ~~handle catch error in general...~~ \n    - not finding a resource is not an error\n\t- on sign up...\n    \t- create new user in db w/lambda\n        \t- if username || email available\n        - create auth user in firebase auth\n        \t- if username && email available\n- Login ",
         "mime": "text/markdown"
       },
       "id": "3",
