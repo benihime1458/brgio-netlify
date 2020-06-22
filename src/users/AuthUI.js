@@ -39,16 +39,20 @@ export default AuthUI => {
     fire.auth().signInWithEmailAndPassword(email, password).then(u => console.log(u)).catch(error => console.log(error))
   }
 
-  const signup = async ({email, password}) => {
-    // e.preventDefault()
-
+  const signup = async ({username, email, password}) => {
     const res = await fetch('/.netlify/functions/getAllProblems')
     const problems = await res.json()
     console.log('problems: ', problems)
     
-    // let newUser = {username: input.username, email: input.email, problemLog: problems}
+    let newUser = {username: username, email: email, problemLog: problems.data}
 
-    fire.auth().createUserWithEmailAndPassword(email, password).then(u => console.log(u)).catch(error => console.log(error.message))
+    // fire.auth().createUserWithEmailAndPassword(email, password).catch(error => console.log(error.message))
+
+    const createNewUser = await fetch(`/.netlify/functions/getUser`, {method: 'POST', headers: {
+      'Content-Type': 'application/json'
+    }, body: JSON.stringify(newUser)})
+    const data = await createNewUser.json()
+    console.log(data.data)
   }
   
   return (
