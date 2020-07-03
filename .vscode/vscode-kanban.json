@@ -1,35 +1,44 @@
 {
-  "done": [],
-  "in-progress": [
+  "done": [
     {
       "assignedTo": {
         "name": "baklavacado"
       },
       "creation_time": "2020-06-11T22:37:27.545Z",
       "description": {
-        "content": "Current Focus: - on sign up...\n    \t- create new user in db w/lambda\n        \t- if username || email available\n        - create auth user in firebase auth\n        \t- if username && email available\n",
+        "content": "Current Focus: \n",
         "mime": "text/markdown"
       },
       "details": {
-        "content": "- Sign up using fire auth\n\t- ~~handle catch error somehow when user object is not found in db when validating duplicate usernames~~\n    - ~~handle catch error in general...~~ \n    - not finding a resource is not an error\n\t- on sign up...\n    \t- create new user in db w/lambda\n        \t- if username || email available\n        - create auth user in firebase auth\n        \t- if username && email available\n- Login ",
+        "content": "- Sign Up\n\t- ~~handle catch error somehow when user object is not found in db when validating duplicate usernames~~\n    - ~~handle catch error in general...~~ \n    - not finding a resource is not an error\n\t- on sign up...\n    \t- create new user in db (lambda) && auth user (fire) \n        \t- ~~if username && email available~~\n\t\t\t- ~~refactor lambda fn~~\n            - ~~rename lambda fn from getUsers to users~~\n- Login ",
         "mime": "text/markdown"
       },
       "id": "3",
       "references": [],
-      "title": "User Login/Signup UI"
+      "title": "AuthUI"
     }
   ],
-  "testing": [],
-  "todo": [
+  "in-progress": [
     {
       "assignedTo": {
         "name": "baklavacado"
       },
       "creation_time": "2020-06-11T22:38:02.611Z",
+      "description": {
+        "content": "- User Logged In ? Dashboard : AuthUI\n\t- Navbar\n    \t- User Logged In ? Logout : Demo",
+        "mime": "text/markdown"
+      },
+      "details": {
+        "content": "- User Logged In ? Dashboard : AuthUI\n\t- Navbar\n    \t- User Logged In ? Logout : Demo",
+        "mime": "text/markdown"
+      },
       "id": "5",
       "references": [],
       "title": "Build Homepage"
-    },
+    }
+  ],
+  "testing": [],
+  "todo": [
     {
       "assignedTo": {
         "name": "baklavacado"
