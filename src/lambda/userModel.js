@@ -17,14 +17,14 @@ const problemLog = new Schema({
   timestamps: true,
 });
 
-const sessionLog = new Schema({
-  session: { type: Number, required: true },
-  date: { type: Date, required: true },
-  title: { type: String, required: false },
-  problemLog: [problemLog],
-}, {
-  timestamps: true,
-});
+// const sessionLog = new Schema({
+//   session: { type: Number, required: true },
+//   date: { type: Date, required: true },
+//   title: { type: String, required: false },
+//   problemLog: [problemLog],
+// }, {
+//   timestamps: true,
+// });
 
 const userSchema = new Schema({
   username: {
@@ -41,7 +41,7 @@ const userSchema = new Schema({
     trim: true,
     match: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i
   },
-  sessionLog: [sessionLog]
+  problemLog: [problemLog],
 }, {
   timestamps: true,
 });

@@ -22,7 +22,7 @@ export default AuthUI => {
     // fire auth sign up (form)
 
   const infoCheck = async (query, param) => {
-    const response = await fetch(`/.netlify/functions/getUser?${query}=${param}`)
+    const response = await fetch(`/.netlify/functions/users?${query}=${param}`)
 
     if (query === 'username') {
       const {data: {username}} = await response.json()
@@ -46,9 +46,9 @@ export default AuthUI => {
     
     let newUser = {username: username, email: email, problemLog: problems.data}
 
-    // fire.auth().createUserWithEmailAndPassword(email, password).catch(error => console.log(error.message))
+    fire.auth().createUserWithEmailAndPassword(email, password).catch(error => console.log(error.message))
 
-    const createNewUser = await fetch(`/.netlify/functions/getUser`, {method: 'POST', headers: {
+    const createNewUser = await fetch(`/.netlify/functions/users`, {method: 'POST', headers: {
       'Content-Type': 'application/json'
     }, body: JSON.stringify(newUser)})
     const data = await createNewUser.json()

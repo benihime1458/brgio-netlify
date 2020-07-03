@@ -17,13 +17,12 @@ export default App => {
     }
 
     async function getUser(test) {
-        const res = await fetch(`/.netlify/functions/getUser?username=${test}`)
+        const res = await fetch(`/.netlify/functions/users?username=${test}`)
         const data = await res.json()
         console.log(data.data)
     }
 
     // getClimbs()
-    getUser('')
     getUser('benihime1458')
   }, []);
 
