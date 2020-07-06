@@ -15,7 +15,6 @@ export default App => {
       if (user) {
         // User is signed in.
         email = user.email
-
         getUser(email)
       } else {
         // No user is signed in.
@@ -37,7 +36,6 @@ export default App => {
         <Navbar user={user}/>
         <AuthUI />
       </div>
-        {/* {user ? <ClimbsTable problems={user.problemLog}/> : null} */}
     </div>
   )
 }
