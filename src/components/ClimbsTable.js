@@ -110,7 +110,7 @@ export default props => {
       return <Problem problem={problem} key={problem._id} classes={classes} />
     })
 
-    let latestSet = problems.filter(problem => problem.area === wall).reduce((a, b) => a.dateSet > b.dateSet ? a.dateSet : b.dateSet)
+    // let latestSet = problems.filter(problem => problem.area === wall).reduce((a, b) => a.dateSet > b.dateSet ? a.dateSet : b.dateSet)
     // const setDate = new Date(props.problem.dateSet);
     // const lessThan7DaysOld = (currentDate - setDate) < 678017049
 
@@ -121,7 +121,7 @@ export default props => {
         <Button onClick={() => console.log(wall)}>Update Set</Button>
       </Typography>
 
-      <Typography variant='caption' gutterBottom>{(new Date(latestSet)).toLocaleDateString()}</Typography>
+      {/* <Typography variant='caption' gutterBottom>{(new Date(latestSet)).toLocaleDateString()}</Typography> */}
       <Card className={classes.card}>
         <Table size="small">
           <TableHead>
