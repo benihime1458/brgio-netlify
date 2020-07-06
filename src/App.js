@@ -1,37 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import AuthUI from './users/AuthUI'
+import Navbar from './components/Navbar'
 import ClimbsTable from './components/ClimbsTable';
 import './App.css';
+import fire from './users/Fire';
 
 export default App => {
-  const [problems, setProblems] = useState([])
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
 
-    async function getClimbs() {
-      const res = await fetch('/.netlify/functions/getAllProblems')
-      const data = await res.json()
-      console.log(data.data)
-      setProblems(data.data)
+    fire.auth().onAuthStateChanged(function(user) {
+      let email 
+      if (user) {
+        // User is signed in.
+        email = user.email
 
+        getUser(email)
+      } else {
+        // No user is signed in.
+        setUser(null)
+      }
+    });
+
+    async function getUser(email) {
+        const res = await fetch(`/.netlify/functions/users?email=${email}`)
+        const user = await res.json()
+        setUser(user.data)
     }
 
-    async function getUser(test) {
-        const res = await fetch(`/.netlify/functions/users?username=${test}`)
-        const data = await res.json()
-        console.log(data.data)
-    }
-
-    // getClimbs()
-    getUser('benihime1458')
   }, []);
 
   return (
     <div className='root'>
       <div className='content'>
+        <Navbar user={user}/>
         <AuthUI />
-        {/* {problems.length > 0 ? <ClimbsTable problems={problems}/> : console.log(problems)} */}
       </div>
+        {/* {user ? <ClimbsTable problems={user.problemLog}/> : null} */}
     </div>
   )
 }
