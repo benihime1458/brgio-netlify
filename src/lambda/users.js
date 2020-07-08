@@ -3,10 +3,9 @@ import db from './server';
 import User from './userModel';
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
+  let {username, email} = event.queryStringParameters
   switch (event.httpMethod) {
     case 'GET':
-      let {username, email} = event.queryStringParameters
-      
       // query all users if there are no queryStringParameters
       if (!username && !email) {
         const users = await User.find()
@@ -61,14 +60,17 @@ exports.handler = async (event, context) => {
       }
     case 'PUT':
       const put  = JSON.parse(event.body)
-      const currentUser = {...put}
+      const {id, problemLog} = put
 
-      await User.updateOne(currentUser).then(console.log('user updated'))
+      const currentUser = await User.findById(id)
+      currentUser.problemLog = problemLog
+      currentUser.save() // save() needed for full validation/middleware 
+
       return {
         statusCode: 200,
         body: JSON.stringify({
-          msg: "User updated",
-          data: currentUser
+          msg: "User problem log updated",
+          data: currentUser.__v
         })
       }
     default: 
