@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { UserContext } from './context/user-context'
 import AuthUI from './users/AuthUI'
 import Navbar from './components/Navbar'
 import ClimbsTable from './components/ClimbsTable';
@@ -7,6 +8,7 @@ import fire from './users/Fire';
 
 export default App => {
   const [user, setUser] = useState(null)
+
   useEffect(() => {
 
     fire.auth().onAuthStateChanged(function(user) {
@@ -29,12 +31,16 @@ export default App => {
 
   }, []);
 
+  const UserStore = useMemo(() => ({user, setUser}), [user])
+
   return (
     <div className='root'>
       <div className='content'>
-        <Navbar user={user}/>
-        {!user ? <AuthUI /> : null}
-        {user ? <ClimbsTable problems={user.problemLog} /> : null}
+        <UserContext.Provider value={UserStore}>
+          <Navbar user={user}/>
+          {!user ? <AuthUI /> : null}
+          {user ? <ClimbsTable problems={user.problemLog} /> : null}
+        </UserContext.Provider>
       </div>
     </div>
   )
