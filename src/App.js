@@ -7,7 +7,6 @@ import fire from './users/Fire';
 
 export default App => {
   const [user, setUser] = useState(null)
-
   useEffect(() => {
 
     fire.auth().onAuthStateChanged(function(user) {
@@ -34,7 +33,8 @@ export default App => {
     <div className='root'>
       <div className='content'>
         <Navbar user={user}/>
-        <AuthUI />
+        {!user ? <AuthUI /> : null}
+        {user ? <ClimbsTable problems={user.problemLog} /> : null}
       </div>
     </div>
   )
