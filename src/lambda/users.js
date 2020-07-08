@@ -48,8 +48,8 @@ exports.handler = async (event, context) => {
         }
       }
     case 'POST':
-      const data  = JSON.parse(event.body)
-      const newUser = {...data}
+      const post  = JSON.parse(event.body)
+      const newUser = {...post}
 
       await User.create(newUser).then(console.log('user created in db'))
       return {
@@ -57,6 +57,18 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({
           msg: "User created",
           data: newUser
+        })
+      }
+    case 'PUT':
+      const put  = JSON.parse(event.body)
+      const currentUser = {...put}
+
+      await User.updateOne(currentUser).then(console.log('user updated'))
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          msg: "User updated",
+          data: currentUser
         })
       }
     default: 
