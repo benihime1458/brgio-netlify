@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Button, Card, CardContent, CardMedia, Checkbox,
   Table, TableBody, TableCell, TableHead,
-  TableRow, Typography, Divider, IconButton, Paper,
+  TableRow, Typography, Divider, IconButton, Paper, Fade
 } from '@material-ui/core';
 import Add  from '@material-ui/icons/Add';
 import Remove  from '@material-ui/icons/Remove';
@@ -102,11 +102,8 @@ const Problem = props => {
 
 export default props => {
   const { user } = useContext(UserContext)
-  console.log(user)
   const classes = useStyles();
-  const problems = props.problems
-
-  // console.log('user problemlog: ', problems)
+  const problems = user.data.problemLog
   
   const problemList = (wall) => {
     let list = problems.filter(problem => problem.area === wall).sort((a, b) => a.number - b.number).map(problem => {
@@ -120,7 +117,6 @@ export default props => {
         {wall.toUpperCase()}
         <Button onClick={() => console.log(wall)}>Update Set</Button>
     </Typography>
-    {/* <Typography align="center" variant='h4' gutterBottom>{wall.toUpperCase()}</Typography> */}
     <Typography variant='caption' gutterBottom>{(new Date(latestSet)).toLocaleDateString()}</Typography>
       <Card className={classes.card}>
         <Table size="small">
@@ -151,19 +147,21 @@ export default props => {
   const westwall = problemList('west wall');
   
   return (
-    <Paper className='table-paper'>
-      <Typography align="center" variant='h4' gutterBottom>ROUTESETTING MAP</Typography>
-      <Card className={classes.card}>
-        <CardMedia className={classes.media} image="images/brgmap.jpg" title="brgmap"/>
-      </Card>
-      {cave}
-      {corridor}
-      {northeast}
-      {slab}
-      {southeast}
-      {southwest}
-      {westwall}
-      {toprope}
-    </Paper>
+    <Fade in={problems && user ? true : false} timeout={1500}>
+      <Paper className='table-paper'>
+        <Typography align="center" variant='h4' gutterBottom>ROUTESETTING MAP</Typography>
+        <Card className={classes.card}>
+          <CardMedia className={classes.media} image="images/brgmap.jpg" title="brgmap"/>
+        </Card>
+        {cave}
+        {corridor}
+        {northeast}
+        {slab}
+        {southeast}
+        {southwest}
+        {westwall}
+        {toprope}
+      </Paper>
+    </Fade>
   )
 }
