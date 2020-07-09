@@ -24,6 +24,7 @@ export default props => {
       position='fixed'
     >
       <Toolbar className='toolbar'>
+      <Typography variant='h6' style={{flex: 1}}>brg.io</Typography>
       {user ? 
       <>
       <Button 
