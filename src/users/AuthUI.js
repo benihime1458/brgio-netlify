@@ -90,7 +90,7 @@ export default AuthUI => {
       <form onSubmit={handleSubmit(submitForm)}>
 
         {
-          index === 1 ? <TextField 
+          index === 1 ? <label><TextField 
           className='formfield'
           label='Desired Username'
           type='text'
@@ -99,10 +99,10 @@ export default AuthUI => {
           error={!!errors.username}
           variant='filled'
           helperText={errors.username && errors.username.message}
-        /> : null
+        /></label> : null
         }
 
-        <TextField 
+        <label><TextField 
           className='formfield'
           label='Email'
           type='email'
@@ -112,6 +112,8 @@ export default AuthUI => {
           variant='filled'
           helperText={errors.email && errors.email.message}
         />
+        </label>
+        <label>
         <TextField 
           className='formfield'
           label='Password'
@@ -122,8 +124,9 @@ export default AuthUI => {
           variant='filled'
           helperText={errors.password && errors.password.message}
         />
+        </label>
         {
-          index === 1 ? <><TextField 
+          index === 1 ? <label><TextField 
           className='formfield'
           label='Confirm Password'
           type='password'
@@ -133,7 +136,7 @@ export default AuthUI => {
           variant='filled'
           helperText={errors.confirmPassword && "Passwords do not match"}
         /> 
-        </>
+        </label>
         : null
         }
         <Button color='primary' type='submit' variant='contained' fullWidth>{index === 0 ? "Login" : "Sign Up"}</Button>
