@@ -4,6 +4,7 @@ import User from './userModel';
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   let {username, email} = event.queryStringParameters
+  // console.log(event)
   switch (event.httpMethod) {
     case 'GET':
       // query all users if there are no queryStringParameters
